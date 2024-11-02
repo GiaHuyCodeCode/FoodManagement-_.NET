@@ -146,7 +146,11 @@
                                                                     <tr>
                                                                         <th class="table-plus">Name</th>
                                                                         <th>Image</th>
+                                                                        <th>Price(VND)</th>
+                                                                        <th>Qty</th>
+                                                                        <th>Category</th>
                                                                         <th>IsActive</th>
+                                                                        <th>Description</th>
                                                                         <th>CreatedDate</th>
                                                                         <th class="datatable-nosort">Action</th>
                                                                     </tr>
@@ -159,17 +163,24 @@
                                                                 <td>
                                                                     <%--<img alt="" width="40" src="<%#Utils.GetImageUrl(Eval("ImageUrl")) %>" />--%>
                                                                 </td>
+                                                                <td><%# Eval("Price") %></td>
+                                                                <td>
+                                                                    <asp:Label ID="lblQuantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
+                                                                </td>
+                                                                <td><%# Eval("CategoryName") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
                                                                 </td>
+                                                                <td><%# Eval("Description") %></td>
                                                                 <td><%# Eval("CreatedDate") %></td>
                                                                 <td>
                                                                     <asp:LinkButton ID="lnkEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
-                                                                        CommandArgument='<%# Eval("CategoryId") %>' CommandName="edit">
+                                                                        CommandArgument='<%# Eval("ProductID") %>' CommandName="edit">
                                                                         <i class="ti-pencil"></i>
                                                                     </asp:LinkButton>
                                                                     <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
-                                                                        CommandArgument='<%# Eval("CategoryId") %>' CommandName="delete">
+                                                                        CommandArgument='<%# Eval("ProductID") %>' CommandName="delete"
+                                                                        OnClientClick="return confirm('Do you want to delete this Product?');">
                                                                         <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
                                                                 </td>

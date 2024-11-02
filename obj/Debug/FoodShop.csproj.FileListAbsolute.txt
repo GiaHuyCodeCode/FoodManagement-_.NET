@@ -116,3 +116,7 @@ D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\Microsoft.CodeDom.Providers.DotNetComp
 D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.AssemblyReference.cache
 D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.CoreCompileInputs.cache
 D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.Up2Date
+D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.dll
+D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.dll
+D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.xml
+D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.xml
