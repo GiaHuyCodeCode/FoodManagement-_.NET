@@ -27,7 +27,7 @@ namespace FoodShop.Admin
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidToExecute = false;
             int productId = Convert.ToInt32(hdnId.Value);
-            con = new SqlConnection(Connection.GetConnectionString());
+            //con = new SqlConnection(Connection.GetConnectionString());
             cmd = new SqlCommand("Product_Crud", con);
             cmd.Parameters.AddWithValue("@Action", productId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("@ProductId", productId);
@@ -39,22 +39,22 @@ namespace FoodShop.Admin
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
             if (fuProductImage.HasFile)
             {
-                if (Utils.IsValidExpression(fuProductImage.FileName))
-                {
-                    Guid obj = Guid.NewGuid();
-                    fileExtension = Path.GetExtension(fuProductImage.FileName);
-                    imagePath = "Images/Product/" + obj.ToString() + fileExtension;
-                    fuProductImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + obj.ToString() + fileExtension);
-                    cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
-                    isValidToExecute = true;
-                }
-                else
-                {
-                    lblMsg.Visible = true;
-                    lblMsg.Text = "Please select .jpg, .jpeg, .png file only.";
-                    lblMsg.CssClass = "alert alert-danger";
-                    isValidToExecute = false;
-                }
+                //if (Utils.IsValidExpression(fuProductImage.FileName))
+                //{
+                //    Guid obj = Guid.NewGuid();
+                //    fileExtension = Path.GetExtension(fuProductImage.FileName);
+                //    imagePath = "Images/Product/" + obj.ToString() + fileExtension;
+                //    fuProductImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + obj.ToString() + fileExtension);
+                //    cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
+                //    isValidToExecute = true;
+                //}
+                //else
+                //{
+                //    lblMsg.Visible = true;
+                //    lblMsg.Text = "Please select .jpg, .jpeg, .png file only.";
+                //    lblMsg.CssClass = "alert alert-danger";
+                //    isValidToExecute = false;
+                //}
             }
             else
             {
@@ -107,7 +107,7 @@ namespace FoodShop.Admin
         protected void rProduct_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             lblMsg.Visible = false;
-            con = new SqlConnection(Connection.ConnectionString());
+            //con = new SqlConnection(Connection.ConnectionString());
             if (e.CommandName == "edit")
             {
                 cmd= new SqlCommand("Product_Crud", con);
@@ -161,7 +161,7 @@ namespace FoodShop.Admin
         }
         private void getProducts()
         {
-            con = new SqlConnection(Connection.ConnectionString());
+            //con = new SqlConnection(Connection.ConnectionString());
             cmd = new SqlCommand("Product_Crud", con);
             cmd.Parameters.AddWithValue("@Action", "SELECT");
             cmd.CommandType = CommandType.StoredProcedure;
