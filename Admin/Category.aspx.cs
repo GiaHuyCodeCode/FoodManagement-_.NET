@@ -21,6 +21,11 @@ namespace FoodShop.Admin
 			if (!IsPostBack)
 			{
 				Session["breadCrum"] = "Category";
+				if (Session["admin"] == null)
+				{
+					Response.Redirect("../User/Login.aspx");
+				}
+				else getCategories();
 				getCategories();
 			}
 			lblMsg.Visible = false;

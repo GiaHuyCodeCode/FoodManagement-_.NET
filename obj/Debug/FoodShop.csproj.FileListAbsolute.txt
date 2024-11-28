@@ -120,3 +120,5 @@ D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.dll
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.dll
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.xml
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.xml
+D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.dll
+D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.pdb

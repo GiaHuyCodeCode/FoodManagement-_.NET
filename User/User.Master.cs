@@ -23,6 +23,39 @@ namespace FoodShop.User
                 // Add the control to the panel
                 pnlSliderUC.Controls.Add(sliderUserControl);
             }
+
+            if (Session["userId"] != null)
+            {
+                lbLoginOrLogout.Text = "Logout";
+            }
+            else lbLoginOrLogout.Text = "Login";
+		}
+
+        protected System.Void lbLoginOrLogout_Click(object sender, EventArgs e)
+        {
+            if (Session["userId"]==null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
         }
-    }
+
+		protected System.Void lbRegisteredOrProfile_Click(object sender, EventArgs e)
+		{
+			if (Session["userId"] != null)
+			{
+                lblRegisteredOrProfile.Tooltip = "User Profile";
+				Response.Redirect("Profile.aspx");
+			}
+			else
+			{
+                lblRegisteredOrProfile.Tooltip = "User Registration";
+				Response.Redirect("Registration.aspx");
+			}
+		}
+	}
 }
