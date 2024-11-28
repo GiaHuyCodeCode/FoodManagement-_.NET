@@ -10,12 +10,12 @@ using System.IO;
 
 namespace FoodShop.User
 {
-	SqlConnection con;
-	SqlCommand cmd;
-	SqlDataAdapter sda;
-	DataTable dt;
 	public partial class Login : System.Web.UI.Page
 	{
+		SqlConnection con;
+		SqlCommand cmd;
+		SqlDataAdapter sda;
+		DataTable dt;
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (Session["userId"] != null)
