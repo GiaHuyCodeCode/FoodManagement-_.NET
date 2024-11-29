@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FoodShop.User.Default" %>
+
 <<%@ Import Namespace="FoodShop" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -15,10 +16,12 @@
                             <div class="col-md-6  ">
                                 <div class="box ">
                                     <div class="img-box">
-                                        <img src="<%# Utils.GetImageUrl(Eval("ImageUrl")) %>" alt="">
+                                        <a href="Menu.aspx?id=<%# Eval("CategoryId") %>">
+                                            <img src="<%# Utils.GetImageUrl(Eval("ImageUrl")) %>" alt="">
+                                        </a>
                                     </div>
                                     <div class="detail-box">
-                                        <h5>Tasty Thursdays
+                                        <h5><%# Eval("Name") %>
                                         </h5>
                                         <h6>
                                             <span>20%</span> Off

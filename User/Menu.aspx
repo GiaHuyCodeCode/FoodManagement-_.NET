@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="FoodShop.User.Menu" %>
-<%@Import Namespace="FoodShop" %>
+<%@ Import Namespace="FoodShop" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,10 +14,11 @@
             </div>
 
             <ul class="filters_menu">
-                <li class="active" data-filter="*">All</li>
+                <li class="active" data-filter="*" data-id="0">All</li>
                 <asp:Repeater runat="server" ID="rCategory">
                     <ItemTemplate>
-                        <li data-filter=".<%# Regex.Replace(Eval("Name").ToString().ToLower(),@"\s+","") %>"><%# Eval("Name") %></li>
+                        <li data-filter=".<%# Regex.Replace(Eval("Name").ToString().ToLower(),@"\s+","") %>"
+                            data-id="<%# Eval("CategoryId") %>""><%# Eval("Name") %></li>
                     </ItemTemplate>
                 </asp:Repeater>
             </ul>
