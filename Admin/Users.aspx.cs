@@ -10,12 +10,12 @@ using System.IO;
 
 namespace FoodShop.Admin
 {
-	SqlConnection con;
-	SqlCommand cmd;
-	SqlDataAdapter sda;
-	DataTable dt;
 	public partial class Users : System.Web.UI.Page
 	{
+		SqlConnection con;
+		SqlCommand cmd;
+		SqlDataAdapter sda;
+		DataTable dt;
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if(!IsPostBack)
