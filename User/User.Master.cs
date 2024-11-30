@@ -31,7 +31,7 @@ namespace FoodShop.User
             else lbLoginOrLogout.Text = "Login";
 		}
 
-        protected System.Void lbLoginOrLogout_Click(object sender, EventArgs e)
+        protected void lbLoginOrLogout_Click(object sender, EventArgs e)
         {
             if (Session["userId"]==null)
             {
@@ -44,16 +44,16 @@ namespace FoodShop.User
             }
         }
 
-		protected System.Void lbRegisteredOrProfile_Click(object sender, EventArgs e)
+		protected void lbRegisteredOrProfile_Click(object sender, EventArgs e)
 		{
 			if (Session["userId"] != null)
 			{
-                lblRegisteredOrProfile.Tooltip = "User Profile";
+                lbRegisteredOrProfile.ToolTip = "User Profile";
 				Response.Redirect("Profile.aspx");
 			}
 			else
 			{
-                lblRegisteredOrProfile.Tooltip = "User Registration";
+                lbRegisteredOrProfile.ToolTip = "User Registration";
 				Response.Redirect("Registration.aspx");
 			}
 		}

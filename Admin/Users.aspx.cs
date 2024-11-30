@@ -50,8 +50,8 @@ namespace FoodShop.Admin
 				con = new SqlConnection(Connection.GetConnectionString());
 				cmd = new SqlCommand("User_Crud", con);
 				cmd.Parameters.AddWithValue("@Action", "DELETE");
-				cmd.Paremeters.AddWithValue("@UserId", e.CommandArgument);
-				cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", e.CommandArgument);
+                cmd.CommandType = CommandType.StoredProcedure;
 				try
 				{
 					con.Open();

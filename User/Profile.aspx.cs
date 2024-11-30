@@ -39,7 +39,7 @@ namespace FoodShop.User
 			cmd.Parameters.AddWithValue("@Action", "SELECT4PROFILE");
 			cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
 			cmd.CommandType=CommandType.StoredProcedure;
-			sda = nem SqlDataAdapter(cmd);
+			sda = new SqlDataAdapter(cmd);
 			dt=new DataTable();
 			sda.Fill(dt);
 			rUserProfile.DataSource = dt;

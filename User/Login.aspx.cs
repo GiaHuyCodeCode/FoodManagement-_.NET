@@ -24,7 +24,7 @@ namespace FoodShop.User
 			}
 		}
 
-        protected System.Void btnLogin_Click()
+        protected void btnLogin_Click()
         {
 			if (txtUsername.Text.Trim()=="Admin" && txtPassword.Text.Trim() == "123")
 			{
@@ -52,7 +52,7 @@ namespace FoodShop.User
 				else
 				{
 					lblMsg.Visible=true;
-					lblMsg.Tex = "Invalid Credentials..!";
+					lblMsg.Text = "Invalid Credentials..!";
 					lblMsg.CssClass = "alert alert-danger";
 				}
 			}

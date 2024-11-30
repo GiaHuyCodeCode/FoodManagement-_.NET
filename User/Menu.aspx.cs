@@ -40,7 +40,7 @@ namespace FoodShop.User
 
 		private void getProducts()
 		{
-			con = new SqlConnection(Connection.ConnectionString());
+			con = new SqlConnection(Connection.GetConnectionString());
 			cmd = new SqlCommand("Product_Crud", con);
 			cmd.Parameters.AddWithValue("@Action", "SELECT");
 			cmd.CommandType = CommandType.StoredProcedure;
