@@ -62,6 +62,12 @@ D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.pdb
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\FoodShop.dll.config
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\FoodShop.dll
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\FoodShop.pdb
+D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.AssemblyReference.cache
+D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.CoreCompileInputs.cache
+D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.Up2Date
+D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.dll
+D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.pdb
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\csc.exe
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\csc.exe.config
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\csc.rsp
@@ -112,13 +118,3 @@ D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\vbc.rsp
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\VBCSCompiler.exe
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\VBCSCompiler.exe.config
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.AssemblyReference.cache
-D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.CoreCompileInputs.cache
-D:\UIT\HK7\DotNet\FoodManagement_.NET\obj\Debug\FoodShop.csproj.Up2Date
-D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.dll
-D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.dll
-D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.xml
-D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\DocumentFormat.OpenXml.Framework.xml
-D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.dll
-D:\Homework\.NET\Project\FoodManagement_.NET\obj\Debug\FoodShop.pdb
