@@ -91,5 +91,11 @@ namespace FoodShop
             sda.Fill(dt);
             return dt.Rows.Count;
         }
+
+        public static string GetUniqueId()
+        {
+            Guid guid = Guid.NewGuid();
+            return guid.ToString();
+        }
     }
 }
