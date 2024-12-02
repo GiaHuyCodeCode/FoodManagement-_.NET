@@ -118,3 +118,7 @@ D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\vbc.rsp
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\VBCSCompiler.exe
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\roslyn\VBCSCompiler.exe.config
 D:\UIT\HK7\DotNet\FoodManagement_.NET\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\4_1\SE310\FoodShop\obj\Debug\FoodShop.csproj.AssemblyReference.cache
+E:\4_1\SE310\FoodShop\obj\Debug\FoodShop.csproj.CoreCompileInputs.cache
+E:\4_1\SE310\FoodShop\obj\Debug\FoodShop.dll
+E:\4_1\SE310\FoodShop\obj\Debug\FoodShop.pdb

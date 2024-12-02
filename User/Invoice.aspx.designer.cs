@@ -11,7 +11,7 @@ namespace FoodShop.User
 {
 
 
-    public partial class Menu
+    public partial class Invoice
     {
 
         /// <summary>

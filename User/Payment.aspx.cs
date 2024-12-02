@@ -128,7 +128,7 @@ namespace FoodShop.User
                 lblMsg.Visible = true;
                 lblMsg.Text = "Order Placed Successfully";
                 lblMsg.CssClass = "alert alert-success";
-                Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id"+paymentId);
+                Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id="+paymentId);
             }
             catch (Exception e)
             {
