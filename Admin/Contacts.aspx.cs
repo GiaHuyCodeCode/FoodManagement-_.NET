@@ -56,9 +56,9 @@ namespace FoodShop.Admin
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lblMsg.Visible = true;
-                    lblMsg.Text = "User deleted successfully!";
+                    lblMsg.Text = "Record deleted successfully!";
                     lblMsg.CssClass = "alert alert-success";
-                    getUsers();
+                    getContacts();
                 }
                 catch (Exception ex)
                 {

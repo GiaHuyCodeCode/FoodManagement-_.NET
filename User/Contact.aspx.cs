@@ -25,10 +25,10 @@ namespace FoodShop.User
                 con = new SqlConnection(Connection.GetConnectionString());
                 cmd = new SqlCommand("ContactSp", con);
                 cmd.Parameters.AddWithValue("@Action", "INSERT");
-                cmd.Parameters.AddWithValue("@Action", txtName.Text.Trim());
-                cmd.Parameters.AddWithValue("@Action", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@Action", txtSubject.Text.Trim());
-                cmd.Parameters.AddWithValue("@Action", txtMessage.Text.Trim());
+                cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                cmd.Parameters.AddWithValue("@Subject", txtSubject.Text.Trim());
+                cmd.Parameters.AddWithValue("@Message", txtMessage.Text.Trim());
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -39,7 +39,11 @@ namespace FoodShop.User
             }
             catch (Exception ex)
             {
-              Response.Write(ex.Message);
+              Response.Write("<script>alert(' "+ ex.Message + " ');</script>");
+            }
+            finally
+            {
+                con.Close();
             }
         }
 

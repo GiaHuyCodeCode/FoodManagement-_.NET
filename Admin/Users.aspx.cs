@@ -21,7 +21,7 @@ namespace FoodShop.Admin
 			if(!IsPostBack)
 			{
 				Session["breadCrum"] = "Users";
-				getUsers();
+				//getUsers();
 				if (Session["admin"] == null)
 				{
 					Response.Redirect("../User/Login.aspx");
