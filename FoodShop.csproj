@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -68,6 +72,7 @@
   <ItemGroup>
     <Content Include="Admin\Category.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\OrderStatus.aspx" />
     <Content Include="Admin\Product.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="assets\css\animate.css\css\animate.css" />
@@ -181,6 +186,7 @@
     <Content Include="assets\pages\widget\amchart\worldLow.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Images\login.jpg" />
+    <Content Include="itextsharp.dll" />
     <Content Include="TemplateFiles\css\bootstrap.css" />
     <Content Include="TemplateFiles\css\font-awesome.min.css" />
     <Content Include="TemplateFiles\css\responsive.css" />
@@ -238,6 +244,13 @@
     </Compile>
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\OrderStatus.aspx.cs">
+      <DependentUpon>OrderStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\OrderStatus.aspx.designer.cs">
+      <DependentUpon>OrderStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>

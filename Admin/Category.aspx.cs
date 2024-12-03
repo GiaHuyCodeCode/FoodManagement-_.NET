@@ -26,8 +26,8 @@ namespace FoodShop.Admin
                 {
                     Response.Redirect("../User/Login.aspx");
                 }
-                else getCategories();
-                getCategories();
+                else { getCategories(); }
+               
             }
             lblMsg.Visible = false;
         }

@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script>
+        //For disappearing alert message
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
