@@ -33,7 +33,7 @@
             <div class="card-block-small">
                <i class="icofont icofont-fast-food bg-c-pink card1-icon"></i>
                 <span class="text-c-pink f-w-600">Products</span>
-                <h4><%Response.Write(Session["category"]); %></h4>
+                <h4><%Response.Write(Session["product"]); %></h4>
                 <div>
                     <span class="f-left m-t-10 text-muted">
                         <a href="Product.aspx"><i class="text-c-pink f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -50,7 +50,7 @@
             <div class="card-block-small">
                <i class="icofont icofont-spoon-and-fork bg-c-blue card1-icon"></i>
                 <span class="text-c-green f-w-600">Total Orders</span>
-                <h4><%Response.Write(Session["category"]); %></h4>
+                <h4><%Response.Write(Session["order"]); %></h4>
                 <div>
                     <span class="f-left m-t-10 text-muted">
                         <a href="OrderStatus.aspx"><i class="text-c-green f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -67,7 +67,7 @@
         <div class="card-block-small">
            <i class="icofont icofont-fast-delivery bg-c-pink card1-icon"></i>
             <span class="text-c-yellow f-w-600">Delivered Items</span>
-            <h4><%Response.Write(Session["category"]); %></h4>
+            <h4><%Response.Write(Session["delivered"]); %></h4>
             <div>
                 <span class="f-left m-t-10 text-muted">
                     <a href="OrderStatus.aspx"><i class="text-c-yellow f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -88,7 +88,7 @@
                             <div class="card-block-small">
                                <i class="icofont icofont-delivery-time bg-c-pink card1-icon"></i>
                                 <span class="text-c-blue f-w-600">Pending Itemss</span>
-                                <h4><%Response.Write(Session["category"]); %></h4>
+                                <h4><%Response.Write(Session["pending"]); %></h4>
                                 <div>
                                     <span class="f-left m-t-10 text-muted">
                                         <a href="OrderStatus.aspx"><i class="text-c-blue f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -105,7 +105,7 @@
             <div class="card-block-small">
                <i class="icofont icofont-users-social bg-c-blue card1-icon"></i>
                 <span class="text-c-pink f-w-600">Users</span>
-                <h4><%Response.Write(Session["category"]); %></h4>
+                <h4><%Response.Write(Session["user"]); %></h4>
                 <div>
                     <span class="f-left m-t-10 text-muted">
                         <a href="Users.aspx"><i class="text-c-pink f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -122,7 +122,7 @@
             <div class="card-block-small">
                <i class="icofont icofont-money-bag bg-c-pink card1-icon"></i>
                 <span class="text-c-green f-w-600">Sold Amount</span>
-                <h4><%Response.Write(Session["category"]); %></h4>
+                <h4><%Response.Write(Session["soldAmount"]); %></h4>
                 <div>
                     <span class="f-left m-t-10 text-muted">
                         <a href="Report.aspx"><i class="text-c-green f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
@@ -139,7 +139,7 @@
         <div class="card-block-small">
            <i class="icofont icofont-support-faq bg-c-yellow card1-icon"></i>
             <span class="text-c-yellow f-w-600">Feedbacks</span>
-            <h4><%Response.Write(Session["category"]); %></h4>
+            <h4><%Response.Write(Session["contact"]); %></h4>
             <div>
                 <span class="f-left m-t-10 text-muted">
                     <a href="Contacts.aspx"><i class="text-c-yellow f-16 icofont icofont-eye-alt m-r-10 "></i>View Details</a>
