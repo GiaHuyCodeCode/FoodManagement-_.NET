@@ -114,7 +114,8 @@
                             <i class="ti-search"></i>
                         </a>--%>
                         <a href="index.html">
-                            <img class="img-fluid" src="../assets/images/logo.png" alt="Theme-Logo" />
+                            <%--<img class="img-fluid" src="../assets/images/logo.png" alt="Theme-Logo" />--%>
+                            <h3 class="pl-2">Admin Area</h3>
                         </a>
                         <a class="mobile-options">
                             <i class="ti-more"></i>
@@ -232,10 +233,10 @@
                                    </li>
                                </ul>
 
-                               <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Report</div>
+                               <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Reports</div>
                                <ul class="pcoded-item pcoded-left-item">
                                    <li  >
-                                       <a href="#">
+                                       <a href="Report.aspx">
                                            <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
                                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Selling Report</span>
                                            <span class="pcoded-mcaret"></span>
