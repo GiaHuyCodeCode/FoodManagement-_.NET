@@ -29,7 +29,7 @@
                                 <div class="row">
 
                                     <div class="col-12 mobile-inputs">
-                                        <h4 class="sub-title">Category Lists</h4>
+                                        <h4 class="sub-title">Users Lists</h4>
                                         <div class="card-block table-border-style">
                                             <div class="table-responsive">
 

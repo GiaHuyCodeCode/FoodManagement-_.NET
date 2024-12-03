@@ -73,12 +73,38 @@ namespace FoodShop.Admin
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            int orderDetailsId = Convert.ToInt32(hdnID.Value);
+            con = new SqlConnection(Connection.GetConnectionString());
+            cmd = new SqlCommand("Invoice", con);
+            cmd.Parameters.AddWithValue("@Action", "UPDTSTATUS");
+            cmd.Parameters.AddWithValue("@OrderDetailsId", orderDetailsId);
+            cmd.Parameters.AddWithValue("@Status", ddlOrderStatus.SelectedValue);
 
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                lblMsg.Visible = true;
+                lblMsg.Text = "Order status updated successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                getOrderStatus();
+            }
+            catch (Exception ex)
+            {
+                lblMsg.Visible = true;
+                lblMsg.Text = "Error - " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-
+            pUpdateOrderStatus.Visible=false;
         }
     }
 }
