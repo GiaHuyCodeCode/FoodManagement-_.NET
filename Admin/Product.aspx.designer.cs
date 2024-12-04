@@ -11,7 +11,7 @@ namespace FoodShop.Admin
 {
 
 
-    public partial class WebForm1
+    public partial class Product
     {
 
         /// <summary>

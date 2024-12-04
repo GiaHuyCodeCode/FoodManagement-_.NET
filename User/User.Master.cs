@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -31,18 +32,7 @@ namespace FoodShop.User
             else lbLoginOrLogout.Text = "Login";
 		}
 
-        protected void lbLoginOrLogout_Click(object sender, EventArgs e)
-        {
-            if (Session["userId"]==null)
-            {
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                Session.Abandon();
-                Response.Redirect("Login.aspx");
-            }
-        }
+        
 
 		protected void lbRegisteredOrProfile_Click(object sender, EventArgs e)
 		{
@@ -57,5 +47,18 @@ namespace FoodShop.User
 				Response.Redirect("Registration.aspx");
 			}
 		}
-	}
+
+        protected void lbLoginOrLogout_Click(object sender, EventArgs e)
+        {
+            if (Session["userId"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
+        }
+    }
 }

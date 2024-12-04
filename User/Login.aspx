@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="FoodShop.User.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" CodeBehind="Login.aspx.cs" Inherits="FoodShop.User.Login" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script>
@@ -45,7 +47,7 @@
                         <div class="btn_box">
                             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-success rounded-pill pl-4 pr-4 text-white"
                                 onClick="btnLogin_Click"/>
-                            <span class="pl-3 text-info">New User? <a href="Registration.aspx" class="badge badge-info">Register Here..</a></span>
+                            <span class="pl-3 text-info">New User? <a href="Registration.aspx" class="badge badge-info"> Register Here..</a></span>
                         </div>
                     </div>
                 </div>

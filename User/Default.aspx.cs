@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace FoodShop.User
 {
@@ -34,5 +35,6 @@ namespace FoodShop.User
 			rCategory.DataSource = dt;
 			rCategory.DataBind();
 		}
-	}
+
+    }
 }

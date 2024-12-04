@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace FoodShop.Admin
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Product : System.Web.UI.Page
     {
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -43,22 +48,22 @@ namespace FoodShop.Admin
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
             if (fuProductImage.HasFile)
             {
-                //if (Utils.IsValidExpression(fuProductImage.FileName))
-                //{
-                //    Guid obj = Guid.NewGuid();
-                //    fileExtension = Path.GetExtension(fuProductImage.FileName);
-                //    imagePath = "Images/Product/" + obj.ToString() + fileExtension;
-                //    fuProductImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + obj.ToString() + fileExtension);
-                //    cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
-                //    isValidToExecute = true;
-                //}
-                //else
-                //{
-                //    lblMsg.Visible = true;
-                //    lblMsg.Text = "Please select .jpg, .jpeg, .png file only.";
-                //    lblMsg.CssClass = "alert alert-danger";
-                //    isValidToExecute = false;
-                //}
+                if (Utils.IsValidExtension(fuProductImage.FileName))
+                {
+                    Guid obj = Guid.NewGuid();
+                    fileExtension = Path.GetExtension(fuProductImage.FileName);
+                    imagePath = "Images/Product/" + obj.ToString() + fileExtension;
+                    fuProductImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + obj.ToString() + fileExtension);
+                    cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
+                    isValidToExecute = true;
+                }
+                else
+                {
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Please select .jpg, .jpeg, .png file only.";
+                    lblMsg.CssClass = "alert alert-danger";
+                    isValidToExecute = false;
+                }
             }
             else
             {
