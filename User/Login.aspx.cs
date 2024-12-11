@@ -19,7 +19,7 @@ namespace FoodShop.User
         DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClientScript.RegisterForEventValidation(btnLogin.UniqueID);
+            //ClientScript.RegisterForEventValidation(lbtnLogin.UniqueID);
             if (Session["userId"] != null)
             {
                 Response.Redirect("Default.aspx");
@@ -34,7 +34,7 @@ namespace FoodShop.User
 
                 if (txtUsername.Text.Trim() == "Admin" && txtPassword.Text.Trim() == "123")
                 {
-                    Session["admin"] = txtUsername.Text.Trim();
+                    Session["admin"] = "Admin";
                     Response.Redirect("../Admin/Dashboard.aspx");
                 }
                 else

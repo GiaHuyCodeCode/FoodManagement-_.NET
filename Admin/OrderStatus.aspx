@@ -59,7 +59,7 @@
                        </td>
                        <td>
                            <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
-                               CssClass="<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>"></asp:Label>
+                               CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'/>
                        </td>
                        <td><%# Eval("Name") %> </td>
                         <td><%# Eval("TotalPrice") %> </td>

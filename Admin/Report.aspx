@@ -3,9 +3,6 @@
      <script>
  window.onload = function () {
      var seconds = 5;
-     setTimeout(function () {
-         document.getElementById("<%=lblMsg.ClientID%>").style.display = "none";
-     }, seconds * 1000);
  };
      </script>
 </asp:Content>

@@ -70,7 +70,7 @@
                                                 </div>
                                                 <div class="pb-5">
                                                     <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary"
-                                                        OnClick="btnAddOrUpdate" />
+                                                        OnClick="btnAddOrUpdate_Click" />
                                                     &nbsp;
                                                     <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary"
                                                         CauseValidation="false" OnClick="btnClear_Click" />
@@ -87,7 +87,7 @@
                                                 <div class="table-responsive">
 
                                                     <asp:Repeater ID="rCategory" runat="server" OnItemCommand="rCategory_ItemCommand"
-                                                        OnItemDataBound="rCategory_ItemDataBound">
+                                                        OnItemDataBound="rCategory_ItemBound">
                                                         <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
