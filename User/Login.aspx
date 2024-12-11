@@ -8,7 +8,7 @@
             var seconds = 5;
             setTimeout(function () {
                 document.getElementById("<%=lblMsg.ClientID%>").style.display = "none";
-            }, seconds*1000)
+            }, seconds * 1000)
         }
     </script>
 
@@ -29,24 +29,24 @@
                         <img id="userLogin" src="../Images/login.jpg" alt="" class="img-thumbnail"/>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+            
                 <div class="col-md-6">
                     <div class="form_container">
                         <div>
                             <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Username is required" ControlToValidate="txtUsername"
-                                ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter Username"></asp:TextBox>
+                            ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter Username" 
+                                ></asp:TextBox>
                         </div>
                         <div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Password is required" ControlToValidate="txtPassword"
-                                ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small"></asp:RequiredFieldValidator>
+                            ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" TextMode="Password">
                             </asp:TextBox>
                         </div>
                         <div class="btn_box">
-                            <asp:LinkButton ID="lbtnLogin" runat="server" Text="Login" CssClass="btn btn-success rounded-pill pl-4 pr-4 text-white"
-                                onClick="btnLogin_Click" CausesValidation="False" />
+                            <asp:LinkButton ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-success rounded-pill pl-4 pr-4 text-white"
+                                onClick="btnLogin_Click"/>
                             <span class="pl-3 text-info">New User? <a href="Registration.aspx" class="badge badge-info"> Register Here..</a></span>
                         </div>
                     </div>
@@ -56,3 +56,5 @@
     </section>
 
 </asp:Content>
+
+
