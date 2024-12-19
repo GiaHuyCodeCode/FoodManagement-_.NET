@@ -57,7 +57,7 @@
                                                             <td><%#Eval("Email") %></td>
                                                             <td><%#Eval("Subject") %></td>
                                                             <td><%# Eval("Message") %> </td>
-                                                               <td><%# Eval("CreateDate") %> </td>
+                                                               <td><%# Eval("CreatedDate") %> </td>
                                                             <td>
                                                                 <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CssClass="badge bg-danger"
                                                                     CommandArgument='<%# Eval("ContactId") %>' CommandName="delete" 

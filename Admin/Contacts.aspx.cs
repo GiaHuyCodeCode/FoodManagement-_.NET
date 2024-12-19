@@ -33,7 +33,7 @@ namespace FoodShop.Admin
         {
             con = new SqlConnection(Connection.GetConnectionString());
             cmd = new SqlCommand("ContactSp", con);
-            cmd.Parameters.AddWithValue("@Action", "SELECT4ADMIN");
+            cmd.Parameters.AddWithValue("@Action", "SELECT");
             cmd.CommandType = CommandType.StoredProcedure;
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
