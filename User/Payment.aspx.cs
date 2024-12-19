@@ -54,7 +54,7 @@ namespace FoodShop.User
             _paymentMode = "COD";
             if (Session["userId"] != null)
             {
-                OrderPayment(_address,_paymentMode);
+                OrderPayment(_name, _cardNo, _expDate, _cvv, _address, _paymentMode);
             }
             else
             {
@@ -68,13 +68,13 @@ namespace FoodShop.User
             dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[7]
             {
-        new DataColumn("OrderNo", typeof(string)),
-        new DataColumn("ProductId", typeof(int)),
-        new DataColumn("Quantity", typeof(int)),
-        new DataColumn("UserId", typeof(int)),
-        new DataColumn("Status", typeof (string)),
-        new DataColumn("PaymentId", typeof(int)),
-        new DataColumn("OrderDate", typeof(DateTime))
+                new DataColumn("OrderNo", typeof(string)),
+                new DataColumn("ProductId", typeof(int)),
+                new DataColumn("Quantity", typeof(int)),
+                new DataColumn("UserId", typeof(int)),
+                new DataColumn("Status", typeof (string)),
+                new DataColumn("PaymentId", typeof(int)),
+                new DataColumn("OrderDate", typeof(DateTime))
             });
             con = new SqlConnection(Connection.GetConnectionString());
             con.Open();
@@ -86,12 +86,13 @@ namespace FoodShop.User
                 cmd = new SqlCommand("Save_Payment", con, trans);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@CardNo", cardNo);
-                cmd.Parameters.AddWithValue("@ExpDate", expDate);
+                cmd.Parameters.AddWithValue("@ExpiryDate", expDate);
                 cmd.Parameters.AddWithValue("@Cvv", cvv);
                 cmd.Parameters.AddWithValue("@Address", address);
                 cmd.Parameters.AddWithValue("@PaymentMode", paymentMode);
-                cmd.Parameters.Add("@InsertedId", SqlDbType.Int);
-                cmd.Parameters["@InsertedId"].Direction = ParameterDirection.Output;
+                SqlParameter outputIdParam = new SqlParameter("@InsertedId", SqlDbType.Int) { Direction = ParameterDirection.Output }; 
+                cmd.Parameters.Add(outputIdParam);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 paymentId = Convert.ToInt32(cmd.Parameters["@InsertedId"].Value);
 
@@ -107,10 +108,10 @@ namespace FoodShop.User
                 while (dr.Read())
                 {
                     productId = Convert.ToInt32(dr["ProductId"].ToString());
-                    quantity = Convert.ToInt32(dr["Quantity"].ToString());
+                    quantity = Convert.ToInt32(dr["Qty"].ToString());
 
                     UpdateQuantity(productId, quantity, trans, con);
-                    DeleteCartItem(productId, trans, con);
+                    DeleteCartItem(productId, trans, con);  
 
                     dt.Rows.Add(Utils.GetUniqueId(), productId, quantity,
                         Convert.ToInt32(Session["userId"]), "Pending", paymentId, Convert.ToDateTime(DateTime.Now));
@@ -140,110 +141,7 @@ namespace FoodShop.User
             }
             catch (Exception e)
             {
-                try
-                {
-                    trans.Rollback();
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert('Transaction rollback failed: " + ex.Message + "');</script>");
-                }
                 Response.Write("<script>alert('Error: " + e.Message + "');</script>");
-            }
-            #endregion Sql Transaction
-            finally
-            {
-                con.Close();
-            }
-        }
-
-        // Overloaded method for COD
-        void OrderPayment(string address, string paymentMode)
-        {
-            int paymentId; int productId; int quantity;
-            dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[7]
-            {
-        new DataColumn("OrderNo", typeof(string)),
-        new DataColumn("ProductId", typeof(int)),
-        new DataColumn("Quantity", typeof(int)),
-        new DataColumn("UserId", typeof(int)),
-        new DataColumn("Status", typeof (string)),
-        new DataColumn("PaymentId", typeof(int)),
-        new DataColumn("OrderDate", typeof(DateTime))
-            });
-            con = new SqlConnection(Connection.GetConnectionString());
-            con.Open();
-            #region Sql Transaction
-            trans = con.BeginTransaction();
-            try
-            {
-                // Save Payment
-                cmd = new SqlCommand("Save_Payment", con, trans);
-                cmd.Parameters.AddWithValue("@Name", DBNull.Value);
-                cmd.Parameters.AddWithValue("@CardNo", DBNull.Value);
-                cmd.Parameters.AddWithValue("@ExpDate", DBNull.Value);
-                cmd.Parameters.AddWithValue("@Cvv", DBNull.Value);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@PaymentMode", paymentMode);
-                cmd.Parameters.Add("@InsertedId", SqlDbType.Int);
-                cmd.Parameters["@InsertedId"].Direction = ParameterDirection.Output;
-                cmd.ExecuteNonQuery();
-                paymentId = Convert.ToInt32(cmd.Parameters["@InsertedId"].Value);
-
-                // Debugging statement
-                Response.Write("<script>alert('Payment saved successfully with ID: " + paymentId + "');</script>");
-
-                // Get Cart Items
-                cmd = new SqlCommand("Cart_Crud", con, trans);
-                cmd.Parameters.AddWithValue("@Action", "SELECT");
-                cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
-                cmd.CommandType = CommandType.StoredProcedure;
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    productId = Convert.ToInt32(dr["ProductId"].ToString());
-                    quantity = Convert.ToInt32(dr["Quantity"].ToString());
-
-                    UpdateQuantity(productId, quantity, trans, con);
-                    DeleteCartItem(productId, trans, con);
-
-                    dt.Rows.Add(Utils.GetUniqueId(), productId, quantity,
-                        Convert.ToInt32(Session["userId"]), "Pending", paymentId, Convert.ToDateTime(DateTime.Now));
-                }
-                dr.Close();
-
-                // Debugging statement
-                Response.Write("<script>alert('Cart items fetched successfully');</script>");
-
-                // Save Orders
-                if (dt.Rows.Count > 0)
-                {
-                    cmd = new SqlCommand("Save_Orders", con, trans);
-                    cmd.Parameters.AddWithValue("@tblOrders", dt);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.ExecuteNonQuery();
-
-                    // Debugging statement
-                    Response.Write("<script>alert('Orders saved successfully');</script>");
-                }
-
-                trans.Commit();
-                lblMsg.Visible = true;
-                lblMsg.Text = "Order Placed Successfully";
-                lblMsg.CssClass = "alert alert-success";
-                Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id=" + paymentId);
-            }
-            catch (Exception e)
-            {
-                try
-                {
-                    trans.Rollback();
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert('Transaction rollback failed: " + ex.Message + "');</script>");
-                }
                 Response.Write("<script>alert('Error: " + e.Message + "');</script>");
             }
             #endregion Sql Transaction
@@ -257,20 +155,23 @@ namespace FoodShop.User
         void UpdateQuantity(int _product, int _quantity, SqlTransaction sqlTrans, SqlConnection sqlCon)
         {
             int dbQuantity;
-            cmd = new SqlCommand("Product_Crud", sqlCon, sqlTrans);
+            cmd = new SqlCommand("Product_Crud", sqlCon, sqlTrans); // Pass the transaction here
             cmd.Parameters.AddWithValue("@Action", "GETBYID");
             cmd.Parameters.AddWithValue("@ProductId", _product);
             cmd.CommandType = CommandType.StoredProcedure;
+
             try
             {
                 drl = cmd.ExecuteReader();
-                while(drl.Read())
+                while (drl.Read())
                 {
                     dbQuantity = Convert.ToInt32(drl["Quantity"].ToString());
-                    if(dbQuantity>_quantity && dbQuantity>2)
+                    if (dbQuantity > _quantity && dbQuantity > 2)
                     {
                         dbQuantity = dbQuantity - _quantity;
-                        cmd = new SqlCommand("Product_Crud", sqlCon);
+                        drl.Close(); // Close the reader before executing another command
+
+                        cmd = new SqlCommand("Product_Crud", sqlCon, sqlTrans); // Pass transaction
                         cmd.Parameters.AddWithValue("@Action", "QTYUPDATE");
                         cmd.Parameters.AddWithValue("@Quantity", dbQuantity);
                         cmd.Parameters.AddWithValue("@ProductId", _product);
@@ -280,35 +181,30 @@ namespace FoodShop.User
                 }
                 drl.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Response.Write("<script>alert('" + e.Message + "')</script>");
             }
-            finally
-            {
-
-            }
         }
+
 
         void DeleteCartItem(int _product, SqlTransaction sqlTrans, SqlConnection sqlCon)
         {
-            cmd = new SqlCommand("Cart_Crud", sqlCon);
+            cmd = new SqlCommand("Cart_Crud", sqlCon, sqlTrans); // Pass transaction
             cmd.Parameters.AddWithValue("@Action", "DELETE");
             cmd.Parameters.AddWithValue("@ProductId", _product);
             cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
             cmd.CommandType = CommandType.StoredProcedure;
+
             try
             {
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Response.Write("<script>alert('" + e.Message + "')</script>");
             }
-            finally
-            {
-
-            }
         }
+
     }
 }

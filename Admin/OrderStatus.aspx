@@ -63,7 +63,7 @@
                        </td>
                        <td><%# Eval("Name") %> </td>
                         <td><%# Eval("TotalPrice") %> </td>
-                        <td><%# Eval("Payment Mode") %> </td>
+                        <td><%# Eval("PaymentMode") %> </td>
                        <td>
                            <asp:LinkButton ID="lnkEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
                                CommandArgument='<%# Eval("OrderDetailsId") %>' CommandName="edit">
