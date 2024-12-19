@@ -52,6 +52,8 @@
                             <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Address"
                                 ToolTip="Address" TextMode="MultiLine"></asp:TextBox>
                         </div>
+                        <asp:TextBox ID="txtPostcode" runat="server" CssClass="form-control" placeholder="Postcode"
+                            ToolTip="Postcode"></asp:TextBox>
                         <div>
                             <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ErrorMessage="Phone number is required" ControlToValidate="txtPhone"
                                 ForeColor="Red" Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -70,7 +72,7 @@
                 <div class="row pl-4">
                     <div class="btn-box">
                         <asp:Button ID="btnRegister" runat="server" CssClass="btn btn-success rounded-pill pl-4 pr-4 text-white"
-                            Text="Register" />
+                            Text="Register" OnClick="btnRegister_Click" />
                         <asp:Label ID="lblAlreadyUser" runat="server" CssClass="pl-3 text-black-100"
                             Text="Already Registered? <a href='Login.aspx' class='badge badge-info'>Login here</a>"></asp:Label>
                     </div>
