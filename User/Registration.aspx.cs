@@ -19,16 +19,31 @@ namespace FoodShop.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    getUserDetails();
+                }
+                else if (Session["userId"] != null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidToExecute = false;
-            int userId = Convert.ToInt32(Request.QueryString["id"]);
-            con= new SqlConnection(Connection.GetConnectionString());
+
+            int userId = Request.QueryString["id"] != null
+             ? Convert.ToInt32(Request.QueryString["id"])
+             : (Session["userId"] != null ? Convert.ToInt32(Session["userId"]) : 0);
+
+            con = new SqlConnection(Connection.GetConnectionString());
             cmd=new SqlCommand("User_Crud", con);
+            userId = 2;
             cmd.Parameters.AddWithValue("@Action", userId==0? "INSERT": "UPDATE");
             cmd.Parameters.AddWithValue("@UserId", userId);
             cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
@@ -104,6 +119,31 @@ namespace FoodShop.User
                     con.Close();
                 }
             }
+        }
+
+        void getUserDetails()
+        {
+            con = new SqlConnection(Connection.GetConnectionString());
+            cmd = new SqlCommand("User_Crud", con);
+            cmd.Parameters.AddWithValue("@Action", "SELECT4PROFILE");
+            cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
+            cmd.CommandType = CommandType.StoredProcedure;
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count == 1)
+            {
+                txtName.Text = dt.Rows[0]["Name"].ToString();
+                txtUsername.Text = dt.Rows[0]["Username"].ToString();
+                txtPhone.Text = dt.Rows[0]["Mobile"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtPostcode.Text = dt.Rows[0]["Postcode"].ToString();
+                txtPassword.Text = dt.Rows[0]["Password"].ToString();
+            }
+            lblHeaderMsg.Text = "Edit Profile";
+            btnRegister.Text = "Update";
+            lblAlreadyUser.Text = "";
         }
 
         private void clear()
