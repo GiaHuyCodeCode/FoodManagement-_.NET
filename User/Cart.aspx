@@ -48,8 +48,8 @@
                         <td>
                             <div class="product__details__option">
                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                        <asp:TextBox ID="txtQuantity" runat="server" 
+                                    <div>
+                                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="pro-qty"
                                             TextMode="Number" Text='<%#Eval("Quantity") %>'>
                                         </asp:TextBox>
                                         <asp:RegularExpressionValidator ID="revQuantity" runat="server" ErrorMessage="*" 
@@ -77,23 +77,23 @@
                     <tr>
                         <td colspan="3"></td>
                         <td class="pl-lg-5">
-                            <b>Grand Toal:-</b>
+                            <b>Grand Toal:</b>
                         </td>
                         <td><% Response.Write(Session["grandTotal"]); %>VND</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="continue__btn">
-                            <a href="Menu.aspx" class="btn btn-info"><i class="fa fa-arrow-circle-left mr-2"/>Continue Shopping</a>
+                            <a href="Menu.aspx" class="btn btn-info">Continue Shopping</a>
                         </td>
                         <td>
                             <asp:LinkButton ID="lbUpdateCart" runat="server" CommandName="updateCart" CssClass="btn btn-warning">
-                                <i class="fa fa-refresh mr-2"/>Update Cart
+                                Update Cart
                             </asp:LinkButton>
                         </td>
                         <td>
                             <asp:LinkButton ID="lbCheckout" runat="server" CommandName="checkout" CssClass="btn btn-success">
-                                Checkout<i class="fa fa-arrow-circle-right ml-2"/>
+                                Checkout
                              </asp:LinkButton>
                         </td>
                     </tr>
