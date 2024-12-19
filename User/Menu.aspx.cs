@@ -116,9 +116,5 @@ namespace FoodShop.User
 			}
 			return quantity;
         }
-        //public string LowerCase(object obj)
-        //{
-        //	return obj.ToString().ToLower();
-        //}
     }
 }

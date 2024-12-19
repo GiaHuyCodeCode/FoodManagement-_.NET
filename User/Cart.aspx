@@ -79,7 +79,7 @@
                         <td class="pl-lg-5">
                             <b>Grand Toal:-</b>
                         </td>
-                        <td><% Response.Write(Session["grandTotalPrice"]); %>VND</td>
+                        <td><% Response.Write(Session["grandTotal"]); %>VND</td>
                         <td></td>
                     </tr>
                     <tr>
