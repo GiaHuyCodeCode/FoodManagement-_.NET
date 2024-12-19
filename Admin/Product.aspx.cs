@@ -22,12 +22,15 @@ namespace FoodShop.Admin
             if (!IsPostBack)
             {
                 Session["breadCrum"] = "Product";
-				if (Session["admin"] == null)
-				{
-					Response.Redirect("../User/Login.aspx");
-				}
-                else getProducts(); 
-			}
+                if (Session["admin"] == null)
+                {
+                    Response.Redirect("../User/Login.aspx");
+                }
+                else
+                {
+                    getProducts();
+                }
+            }
             lblMsg.Visible = false;
         }
 
@@ -36,7 +39,7 @@ namespace FoodShop.Admin
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidToExecute = false;
             int productId = Convert.ToInt32(hdnId.Value);
-            //con = new SqlConnection(Connection.GetConnectionString());
+            con = new SqlConnection(Connection.GetConnectionString());
             cmd = new SqlCommand("Product_Crud", con);
             cmd.Parameters.AddWithValue("@Action", productId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("@ProductId", productId);
@@ -110,16 +113,19 @@ namespace FoodShop.Admin
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
-
+            clear();
         }
 
         protected void rProduct_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             lblMsg.Visible = false;
-            //con = new SqlConnection(Connection.ConnectionString());
+            con = new SqlConnection(Connection.GetConnectionString());
+
             if (e.CommandName == "edit")
             {
-                cmd= new SqlCommand("Product_Crud", con);
+                lblMsg.Text = "Edit command triggered.";
+                lblMsg.Visible = true;
+                cmd = new SqlCommand("Product_Crud", con);
                 cmd.Parameters.AddWithValue("@Action", "GETBYID");
                 cmd.Parameters.AddWithValue("@ProductId", e.CommandArgument);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -156,7 +162,7 @@ namespace FoodShop.Admin
                     lblMsg.CssClass = "alert alert-success";
                     getProducts();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     lblMsg.Visible = true;
                     lblMsg.Text = "ERROR: " + ex.Message.ToString();
@@ -183,10 +189,11 @@ namespace FoodShop.Admin
 
         protected void rProduct_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            if(e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 Label lblIsActive = e.Item.FindControl("lblIsActive") as Label;
                 Label lblQuantity = e.Item.FindControl("lblQuantity") as Label;
+                Label lblCategoryName = e.Item.FindControl("lblCategoryName") as Label;
                 if (lblIsActive.Text == "True")
                 {
                     lblIsActive.Text = "Active";
@@ -197,11 +204,13 @@ namespace FoodShop.Admin
                     lblIsActive.Text = "Inactive";
                     lblIsActive.CssClass = "badge badge-danger";
                 }
-                if(Convert.ToInt32(lblQuantity.Text) <= 5)
+                if (Convert.ToInt32(lblQuantity.Text) <= 5)
                 {
                     lblQuantity.ToolTip = "Item is about to be Out of Stock!";
                     lblQuantity.CssClass = "badge badge-danger";
                 }
+
+                lblCategoryName.Text = DataBinder.Eval(e.Item.DataItem, "CategoryName").ToString();
             }
         }
     }

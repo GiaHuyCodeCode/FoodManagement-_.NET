@@ -50,7 +50,7 @@
                                                             placeholder="Enter Product Name" required></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                                             ErrorMessage="Name is required" ForeColor="Red" Display="Dynamic"
-                                                            SetFocusOnError="true" ControlToValidate="txtName"></asp:RequiredFieldValidator>
+                                                            SetFocusOnError="true" ControlToValidate="txtName" ValidationGroup="SubmitGroup"></asp:RequiredFieldValidator>
                                                         <asp:HiddenField ID="hdnId" runat="server" Value="0" />
                                                     </div>
                                                 </div>
@@ -62,7 +62,7 @@
                                                             placeholder="Enter Product Description" TextMode="MultiLine"></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                                             ErrorMessage="Description is required" ForeColor="Red" Display="Dynamic"
-                                                            SetFocusOnError="true" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
+                                                            SetFocusOnError="true" ControlToValidate="txtDescription" ValidationGroup="SubmitGroup"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
 
@@ -73,11 +73,11 @@
                                                             placeholder="Enter Product Quantity"></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                                             ErrorMessage="Quantity is required" ForeColor="Red" Display="Dynamic"
-                                                            SetFocusOnError="true" ControlToValidate="txtQuantity"></asp:RequiredFieldValidator>
+                                                            SetFocusOnError="true" ControlToValidate="txtQuantity" ValidationGroup="SubmitGroup"></asp:RequiredFieldValidator>
                                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                                             ErrorMessage="Quantity must be non-negative" ForeColor="Red" Display="Dynamic"
                                                             SetFocusOnError="true" ControlToValidate="txtQuantity"
-                                                            ValidationExpression="^[0-9]+(\.[0-9]+)?$"></asp:RegularExpressionValidator>
+                                                            ValidationExpression="^[0-9]+(\.[0-9]+)?$" ValidationGroup="SubmitGroup"></asp:RegularExpressionValidator>
                                                     </div>
                                                 </div>
 
@@ -88,11 +88,11 @@
                                                             placeholder="Enter Product Price"></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                                             ErrorMessage="Price is required" ForeColor="Red" Display="Dynamic"
-                                                            SetFocusOnError="true" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>
+                                                            SetFocusOnError="true" ControlToValidate="txtPrice" ValidationGroup="SubmitGroup"></asp:RequiredFieldValidator>
                                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                                             ErrorMessage="Price must be in decimal" ForeColor="Red" Display="Dynamic"
                                                             SetFocusOnError="true" ControlToValidate="txtPrice"
-                                                            ValidationExpression="^^\d+(\.\d+)?$"></asp:RegularExpressionValidator>
+                                                            ValidationExpression="^^\d+(\.\d+)?$" ValidationGroup="SubmitGroup"></asp:RegularExpressionValidator>
                                                     </div>
                                                 </div>
 
@@ -107,15 +107,19 @@
                                                 <div class="form-group">
                                                     <label>Product Category</label>
                                                     <div>
-                                                        <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
+                                                        <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control"
+                                                            DataSourceID="sdsCategories" DataTextField="Name" DataValueField="CategoryId">
                                                             <asp:ListItem Value="0">Select Category</asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                                                             ErrorMessage="Category is required" ForeColor="Red" Display="Dynamic"
-                                                            SetFocusOnError="true" ControlToValidate="ddlCategory" InitialValue="0">
+                                                            SetFocusOnError="true" ControlToValidate="ddlCategory" InitialValue="0" ValidationGroup="SubmitGroup">
                                                         </asp:RequiredFieldValidator>
-                                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+                                                        <asp:SqlDataSource ID="sdsCategories" runat="server"
+                                                            ConnectionString="<%$ ConnectionStrings:cs %>"
+                                                            SelectCommand="SELECT CategoryId, Name FROM Categories"></asp:SqlDataSource>
                                                     </div>
+
                                                 </div>
 
                                                 <div class="form-check pl-4">
@@ -136,10 +140,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
-                                            <h4 class="sub-title">Category Lists</h4>
+                                            <h4 class="sub-title">Product List</h4>
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
-                                                    <asp:Repeater ID="rProduct" runat="server">
+                                                    <asp:Repeater ID="rProduct" runat="server" OnItemDataBound="rProduct_ItemDataBound" OnItemCommand="rProduct_ItemCommand">
                                                         <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
@@ -167,7 +171,7 @@
                                                                 <td>
                                                                     <asp:Label ID="lblQuantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
                                                                 </td>
-                                                                <td><%# Eval("CategoryName") %></td>
+                                                                <td> <asp:Label ID="lblCategoryName" runat="server"></asp:Label> </td>
                                                                 <td>
                                                                     <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
                                                                 </td>
@@ -175,12 +179,14 @@
                                                                 <td><%# Eval("CreatedDate") %></td>
                                                                 <td>
                                                                     <asp:LinkButton ID="lnkEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
-                                                                        CommandArgument='<%# Eval("ProductID") %>' CommandName="edit">
+                                                                        CommandArgument='<%# Eval("ProductID") %>' CommandName="edit"
+                                                                        ValidationGroup ="CommandGroup">
                                                                         <i class="ti-pencil"></i>
                                                                     </asp:LinkButton>
                                                                     <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
                                                                         CommandArgument='<%# Eval("ProductID") %>' CommandName="delete"
-                                                                        OnClientClick="return confirm('Do you want to delete this Product?');">
+                                                                        OnClientClick="return confirm('Do you want to delete this Product?');"
+                                                                        ValidationGroup ="CommandGroup">
                                                                         <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
                                                                 </td>

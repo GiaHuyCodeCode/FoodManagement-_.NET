@@ -40,7 +40,7 @@ namespace FoodShop.Admin
             con = new SqlConnection(Connection.GetConnectionString());
             cmd = new SqlCommand("Category_Crud", con);
             cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
-            cmd.Parameters.AddWithValue("@Category", categoryId);
+            cmd.Parameters.AddWithValue("@CategoryId", categoryId);
             cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
             if (fuCategoryImage.HasFile)
