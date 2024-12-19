@@ -22,10 +22,10 @@
                             <div class="card-title mb-4">
                                 <div class="d-flex justify-content-start">
                                     <div class="image-container">
-                                        <img src="<%=Utils.GetImageUrl(imageUrl) %>" id="imgProfile" style="width: 150px; height: 150px;"
+                                        <img src='<%=Utils.GetImageUrl(imageUrl) %>' id="imgProfile" style="width: 150px; height: 150px;"
                                             class="img-thumbnail" />
                                         <div class="middle pt-2">
-                                            <a href="Registration.aspx?id=<%Response.Write(Session["userId"]); %>" class="btn btn-warning">
+                                            <a href="Registration.aspx?id=<%Response.Write(Session["userId"]); %>' class="btn btn-warning">
                                                 <i class="fa fa-pencil"></i>Edit Details
                                             </a>
                                         </div>
@@ -158,12 +158,12 @@
                                                                <%# string.IsNullOrEmpty( Eval("CardNo").ToString()) ? "" : "Card No: " + Eval("CardNo") %>
                                                            </div>
                                                            <div class="col-2" style="text-align:end">
-                                                               <a href="Invoice.aspx?id=<%# Eval("PaymentId") %>" class="btn btn-info btn-sm">
+                                                               <a href="Invoice.aspx?id=<%# Eval("PaymentId") %>' class="btn btn-info btn-sm">
                                                                    <i class="fa fa-download mr-2"></i>Invoice</a>
                                                            </div>
                                                        </div>
 
-                                                       <asp:HiddenField ID="hdnPaymentId" runat="server" Value="<%# Eval("PaymentId") %>"/>
+                                                       <asp:HiddenField ID="hdnPaymentId" runat="server" Value='<%# Eval("PaymentId") %>'/>
 
                                                        <asp:Repeater ID="rOrders" runat="server">
                                                            <HeaderTemplate>
@@ -185,23 +185,23 @@
                                                            <ItemTemplate>
                                                                <tr>
                                                                    <td>
-                                                                       <asp:Label ID="lblName" runat="server" Text="<%# Eval("Name") %>"></asp:Label>
+                                                                       <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                                                    </td>
                                                                    <td>
-                                                                       <asp:Label ID="lblPrice" runat="server" Text="<%# string.IsNullOrEmpty( Eval("Price").ToString()) ? "" : "$" + Eval("Price") %>"></asp:Label>
+                                                                       <asp:Label ID="lblPrice" runat="server" Text='<%# string.IsNullOrEmpty( Eval("Price").ToString()) ? "" : "$" + Eval("Price") %>'></asp:Label>
                                                                    </td>
                                                                    <td>
-                                                                       <asp:Label ID="lblQuantity" runat="server" Text="<%# Eval("Quantity") %>"></asp:Label>
+                                                                       <asp:Label ID="lblQuantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
                                                                    </td>
                                                                    <td>
-                                                                       $<asp:Label ID="lblTotalPrice" runat="server" Text="<%# Eval("TotalPrice") %>"></asp:Label>
+                                                                       $<asp:Label ID="lblTotalPrice" runat="server" Text='<%# Eval("TotalPrice") %>'></asp:Label>
                                                                    </td>
                                                                    <td>
-                                                                       <asp:Label ID="lblOrderNo" runat="server" Text="<%# Eval("OrderNo") %>"></asp:Label>
+                                                                       <asp:Label ID="lblOrderNo" runat="server" Text='<%# Eval("OrderNo") %>'></asp:Label>
                                                                    </td>
                                                                    <td>
-                                                                       <asp:Label ID="lblStatus" runat="server" Text="<%# Eval("Status") %>"
-                                                                           CssClass="<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success": "badge badge-warning" %>"></asp:Label>
+                                                                       <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
+                                                                           CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success": "badge badge-warning" %>'></asp:Label>
                                                                    </td>
 
                                                                </tr>
