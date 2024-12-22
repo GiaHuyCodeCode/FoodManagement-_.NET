@@ -43,7 +43,6 @@ namespace FoodShop.User
 
             con = new SqlConnection(Connection.GetConnectionString());
             cmd=new SqlCommand("User_Crud", con);
-            userId = 2;
             cmd.Parameters.AddWithValue("@Action", userId==0? "INSERT": "UPDATE");
             cmd.Parameters.AddWithValue("@UserId", userId);
             cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());

@@ -54,9 +54,12 @@
                             <div class="col-sm-6 col-lg-4 all <%# Regex.Replace(Eval("CategoryName").ToString().ToLower(),@"\s+","") %>">
                                 <div class="box">
                                     <div>
+                                        <div>
                                         <div class="img-box">
                                             <img src="<%# Utils.GetImageUrl(Eval("ImageUrl")) %>" alt="">
                                         </div>
+                                        <br /><br />
+                                            </div>
                                         <div class="detail-box">
                                             <h5><%# Eval("Name") %>
                                             </h5>

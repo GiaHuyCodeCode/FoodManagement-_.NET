@@ -18,9 +18,7 @@
                         <div>
                             <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="Name is required" ControlToValidate="txtName"
                                 ForeColor="Red" Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="revName" runat="server" ErrorMessage="Name must be in characters only"
-                                ForeColor="Red" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName"
-                                ValidationExpression="^[a-zA-Z]*$"></asp:RegularExpressionValidator>
+                           
                             <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Full Name"
                                 ToolTip="Full Name"></asp:TextBox>
                         </div>

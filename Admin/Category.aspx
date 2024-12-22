@@ -93,7 +93,6 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th class="table-plus">Name</th>
-                                                                        <th>Image</th>
                                                                         <th>IsActive</th>
                                                                         <th>CreatedDate</th>
                                                                         <th class="datatable-nosort">Action</th>
@@ -104,9 +103,6 @@
                                                         <ItemTemplate>
                                                             <tr>
                                                                 <td class="table-plus"><%# Eval("Name") %> </td>
-                                                                <td>
-                                                                    <img alt="" width="40" src="<%# Utils.GetImageUrl(Eval("ImageUrl")) %>" />
-                                                                </td>
                                                                 <td>
                                                                     <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
                                                                 </td>

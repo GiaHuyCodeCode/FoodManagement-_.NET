@@ -6,8 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- offer section -->
-
-    <section class="offer_section layout_padding-bottom">
+    <%--<section class="offer_section layout_padding-bottom">
         <div class="offer_container">
             <div class="container ">
                 <div class="row">
@@ -91,7 +90,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>--%>
 
     <!-- end offer section -->
 

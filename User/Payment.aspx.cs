@@ -163,27 +163,32 @@ namespace FoodShop.User
             try
             {
                 drl = cmd.ExecuteReader();
-                while (drl.Read())
+                if (drl.Read())
                 {
                     dbQuantity = Convert.ToInt32(drl["Quantity"].ToString());
+                    drl.Close(); // Close the reader once data is read
+
                     if (dbQuantity > _quantity && dbQuantity > 2)
                     {
-                        dbQuantity = dbQuantity - _quantity;
-                        drl.Close(); // Close the reader before executing another command
+                        dbQuantity -= _quantity;
 
-                        cmd = new SqlCommand("Product_Crud", sqlCon, sqlTrans); // Pass transaction
-                        cmd.Parameters.AddWithValue("@Action", "QTYUPDATE");
-                        cmd.Parameters.AddWithValue("@Quantity", dbQuantity);
-                        cmd.Parameters.AddWithValue("@ProductId", _product);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.ExecuteNonQuery();
+                        // Use a new command for updating the quantity
+                        SqlCommand updateCmd = new SqlCommand("Product_Crud", sqlCon, sqlTrans); // Pass transaction
+                        updateCmd.Parameters.AddWithValue("@Action", "QTYUPDATE");
+                        updateCmd.Parameters.AddWithValue("@Quantity", dbQuantity);
+                        updateCmd.Parameters.AddWithValue("@ProductId", _product);
+                        updateCmd.CommandType = CommandType.StoredProcedure;
+                        updateCmd.ExecuteNonQuery();
                     }
                 }
-                drl.Close();
+                else
+                {
+                    drl.Close(); // Close the reader if no data is returned
+                }
             }
             catch (Exception e)
             {
-                Response.Write("<script>alert('" + e.Message + "')</script>");
+                Response.Write("<script>alert('" + e.Message + "');</script>");
             }
         }
 
