@@ -40,7 +40,6 @@
                    <table class="table data-table-export table-hover nowrap">
                        <thead>
                            <tr>
-                               <th class="table-plus">Order No.</th>
                                <th>Order Date</th>
                                <th>Status</th>
                                <th>Product Name</th>
@@ -53,7 +52,6 @@
                </HeaderTemplate>
                <ItemTemplate>
                    <tr>
-                       <td class="table-plus"><%# Eval("OrderNo") %> </td>
                        <td>
                             <%# Eval("OrderDate") %>
                        </td>
